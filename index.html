@@ -1,0 +1,156 @@
+html code: <!DOCTYPE html>
+<html lang="en-gb">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- Include Reset CSS -->
+<link rel="stylesheet" href="styles/reset.css">
+
+<!-- Include Custom CSS -->
+<link rel="stylesheet" href="styles/styles.css">
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+    <header
+      class="container-fluid text-center text-white bg-dark p-2 weather-header"
+    >
+      <h1>Weather Dashboard</h1>
+    </header>
+
+    <!-- max-width for ultra wide resolutions -->
+    <div class="container-fluid" style="max-width: 1400px">
+      <div class="row">
+        <aside class="col-lg-3 pb-3">
+          <h2 id="form-heading" class="mt-1 h3 form-label">
+            Search for a City:
+          </h2>
+          <form id="search-form" class="form">
+            <div class="form-inline form-group">
+              <div class="input-group">
+                <input
+                  class="form-input weather-search"
+                  type="text"
+                  id="search-input"
+                  placeholder="London"
+                  aria-labelledby="form-heading"
+                  aria-controls="today forecast"
+                />
+                <div class="input-group-append">
+                  <button
+                    type="submit"
+                    class="btn search-button"
+                    id="search-button"
+                    aria-label="submit search"
+                  >
+                    Search
+                  </button>
+                  <hr class="hr weather-hr" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="list-group" id="history"></div>
+        </aside>
+
+        <div class="col-lg-9 pb-3">
+          <section id="today" class="mt-3" role="region" aria-live="polite">
+            <h2>Today's Weather</h2>
+            <p>This is the text content for today's weather.</p>
+          </section>
+          <section
+            id="forecast"
+            class="row mt-3"
+            role="region"
+            aria-live="polite"
+          ></section>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center">
+      <section id="day" class="mt-3" role="region" aria-live="polite">
+        <h3 class="display-5 fw-bold">5-Day Forecast:</h3>
+      </section>
+    </div>
+
+    <!-- Containers and Cards -->
+    <div class="container-fluid">
+      <div class="row justify-content-end">
+        <div class="cardContainer col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                Daily Weather Forecast
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardContainer col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                Daily Weather Forecast
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardContainer col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                Daily Weather Forecast
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardContainer col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                Daily Weather Forecast
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardContainer col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                Daily Weather Forecast
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Day.js -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

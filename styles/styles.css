@@ -1,0 +1,25 @@
+body {
+    
+    background-color: lightskyblue;
+  }
+  
+  body .weather-header {
+    background-color: hsl(210, 90%, 15%) !important; 
+  }
+  .search-button {
+    color: black; 
+    border: solid black;
+    background-color: aliceblue;
+    margin-top: 10px;
+  }
+  .col-lg-9 {
+    border: dotted;
+  }
+
+.mb-4, .my-4 {
+    margin-bottom: 0.50rem!important; 
+}
+.card-body {
+background-color: rgb(36, 36, 53);
+color: white;
+}
