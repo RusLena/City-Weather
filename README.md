@@ -1,6 +1,9 @@
 Module 9 Project 1: Interactive Front-End Application
 
-The goal of this project was to create a front-end web application for displaying weather information. The application should allow users to search for a city, retrieve its current weather data, and display a 5-day weather forecast. Additionally, the project required the implementation of local storage to store the user's search history and the ability to display buttons for the previously searched cities.
+The goal of this project was to create a front-end web application for displaying weather information. 
+The application should allow users to search for a city, retrieve its current weather data, and display a 5-day weather forecast. 
+Additionally, the project required the implementation of local storage to store the user's search history
+and the ability to display buttons for the previously searched cities.
 
 Achievements:
 
@@ -23,7 +26,8 @@ Challenges Faced:
 
     Struggled with displaying data on the web page despite having the data in local storage.
     Sought assistance from the tutor, Katie Redford, to identify and resolve a bug preventing the display of weather data.
-    Received valuable advice from the tutor, including the suggestion to include longitude and latitude in the code to enhance the accuracy of weather data retrieval.
+    Received valuable advice from the tutor, including the suggestion to include longitude and latitude in the code
+    to enhance the accuracy of weather data retrieval.
 
 Key Learnings:
 
@@ -51,7 +55,8 @@ For future improvements and learning opportunities, consider the following steps
 
 
 Conclusion:
-This project has been an interesting learning journey, offering hands-on experience in front-end development, API integration, and dynamic content creation. 
+This project has been an interesting learning journey, offering hands-on experience in front-end development, 
+API integration, and dynamic content creation. 
 
 Links:
 * Application GitHub URL:
