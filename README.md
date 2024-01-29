@@ -36,15 +36,13 @@ Key Learnings:
     Creating a responsive and interactive user experience with city buttons.
 
 Next Steps:
-Moving forward, the project can be further enhanced by:
-
     Explore alternative data formats for improved data representation.
     Enhance the application's design and user interface for a more polished look.
     Implement additional features or data points to enrich the user experience.
     Optimize code and explore performance improvements.
 
 Next Steps:
-For future improvements and learning opportunities, consider the following steps:
+    For future improvements and learning opportunities, consider the following steps:
     Explore alternative data formats for improved data representation.
     Enhance the application's design and user interface for a more polished look.
     Implement additional features or data points to enrich the user experience.
