@@ -1,12 +1,10 @@
-// Initial array of cities
-
+// Cities Array
 var cities = [];
 var APIKey = "172e14c8b1f9b91de3f6976630d9864a";
 
-/// Function to render buttons for cities
+// Function to create btns for cities
 function renderButtons() {
   $("#history").empty();
-
   for (var i = 0; i < cities.length; i++) {
     var button = $("<button>");
     button.addClass("city");
@@ -18,44 +16,111 @@ function renderButtons() {
 
 // Function to get current weather data
 function getCurrentWeather(city) {
+  console.log(city);
+  var formattedCity = city.toUpperCase();
   var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
 
   // Fetch call to the OpenWeatherMap API
   fetch(queryURL)
     .then(function (response) {
-      // Calling .json() to access the json data
       return response.json();
     })
     .then(function (data) {
-      // Log the queryURL
       console.log(queryURL);
-      // Log the resulting object
       console.log(data);
 
-      // Data that will be dumped in the cards
-      $(".city").text("City: " + data.name);
-      $(".wind").text("Wind Speed: " + data.wind.speed);
-      $(".humidity").text("Humidity: " + data.main.humidity);
-      $(".temp").text("Temperature: " + data.main.temp);
+      // Data that will be dumped in the today's weather section
+      $("#today .city").text("City: " + data.name);
+      $("#today .wind").text("Wind Speed: " + data.wind.speed +"m/s");
+      $("#today .humidity").text("Humidity: " + data.main.humidity + "%");
+      $("#today .temp").text("Temperature: " + data.main.temp);
 
       // Convert the temp to Celsius
       var tempC = data.main.temp - 273.15;
-
       // Add temp content to html
-      $(".tempC").text("Temperature (C) " + tempC.toFixed(2));
+      $("#today .tempC").text("Temperature: " + tempC.toFixed(2));
 
-      // Add the city to the list of cities and render buttons
+      // Weather icon
+      var iconCode = data.weather[0].icon;
+      var iconURL = `http://openweathermap.org/img/w/${iconCode}.png`;
+      $("#wicon").attr("src", iconURL);
+
+      // Add the city to the list of cities
       cities.push(data.name);
-      renderButtons();
 
-      // Log the data in the console as well
+      // Render buttons
+      renderButtons();
+      var lat = data.coord.lat;
+      var lon = data.coord.lon;
+
+      // Store in local Storage
+      localStorage.setItem("cities", JSON.stringify(cities));
+      getFiveDayForecast(lat, lon);
+      // Log the data in 
       console.log("Wind Speed: " + data.wind.speed);
       console.log("Humidity: " + data.main.humidity);
       console.log("Temperature (C): " + tempC);
+      console.log("Weather Icon Code:", iconCode);
+      console.log("Weather Icon URL:", iconURL);
     })
-    // APIKey error 401
     .catch(function (error) {
       console.error("Error fetching weather data:", error);
+    });
+}
+
+// Function to update 5-day forecast
+function getFiveDayForecast(lat, lon) {
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`;
+  fetch(queryURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (forecastData) {
+      console.log(queryURL);
+      console.log("five day", forecastData);
+
+      // Clear forecast cards
+      console.log(forecastData);
+      $("#forecast").empty();
+
+      // Loop through the forecast data and create cards for each day
+      for (var i = 0; i < forecastData.list.length; i += 8) {
+        var forecast = forecastData.list[i];
+
+        // Get info from the forecast data
+        var date = forecast.dt_txt.split(" ")[0];
+        var temperature = forecast.main.temp;
+        var iconCode = forecast.weather[0].icon;
+        var humidity = forecast.main.humidity; 
+        var windSpeed = forecast.wind.speed;
+
+        // temperature to Celsius
+        var tempC = temperature - 273.15;
+
+        // Create a card for each forecast and append it to the forecast section
+        var card = $("<div>").addClass("card");
+        var cardBody = $("<div>").addClass("card-body");
+
+        // Add forecast info to the card
+        cardBody.append($("<p>").text("Date: " + date));
+        cardBody.append(
+          $("<p>").text("Temperature: " + tempC.toFixed(2) + " °C")
+        );
+
+        cardBody.append($("<p>").text("Humidity: " + humidity + "%")); // Added line
+        cardBody.append($("<p>").text("Wind Speed: " + windSpeed + " m/s"))
+
+        // Add an image tag for the weather icon
+        var iconURL = `http://openweathermap.org/img/w/${iconCode}.png`;
+        var iconImg = $("<img>")
+          .attr("src", iconURL)
+          .attr("alt", "Weather icon");
+        cardBody.append(iconImg);
+
+        // Append the card to the forecast section
+        card.append(cardBody);
+        $("#forecast").append(card);
+      }
     });
 }
 
@@ -67,6 +132,19 @@ $("#search-form").submit(function (event) {
 
   if (city !== "") {
     getCurrentWeather(city);
-    cityInput.val(""); // Clear the input field after submitting
+    cityInput.val("");
   }
 });
+
+// Event listener for clicking on a city button
+$(document).on("click", ".city", function () {
+  var selectedCity = $(this).attr("data-weather");
+  getCurrentWeather(selectedCity);
+});
+
+// Get cities from localStorage
+var storedCities = localStorage.getItem("cities");
+if (storedCities) {
+  cities = JSON.parse(storedCities);
+  renderButtons();
+}
