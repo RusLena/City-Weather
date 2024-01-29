@@ -47,6 +47,6 @@ Conclusion:
    API integration, and dynamic content creation. 
    
 Links:
-* Application GitHub URL:
+* Application GitHub URL: https://github.com/RusLena/City-Weather.git
 * Scrinshot:![Alt text](City-weather.PNG)
-* Application deployed at live URL
+* Application deployed at live URL: https://ruslena.github.io/City-Weather/
