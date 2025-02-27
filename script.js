@@ -1,6 +1,6 @@
 // Cities Array
 var cities = [];
-var APIKey = "172e14c8b1f9b91de3f6976630d9864a";
+var APIKey = config.WEATHER_API_KEY;
 
 // Function to create btns for cities
 function renderButtons() {
